@@ -12,5 +12,5 @@
 require 'faker'
 
 100.times do |i|
-  Tweet.create(content: Faker::Lorem.sentence(word_count: 5), nickname: Faker::Intrnet.username)
+  Tweet.create(content: Faker::Lorem.sentence(word_count: 5)) 
 end
