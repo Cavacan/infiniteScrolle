@@ -2,12 +2,10 @@
 
 <h1>Tweets</h1>
 
-<div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
+<div class="tweet-page" style='padding:10px 40px'>
+  <%= turbo_frame_tag "tweets-page-#{@tweets.current_page}" do %>
+    <%= render @tweets %>
+    <%= turbo_frame_tag "tweets-page-#{@tweets.next_page}", loading: :lazy, src: path_to_next_page(@tweets) %>
   <% end %>
 </div>
 
