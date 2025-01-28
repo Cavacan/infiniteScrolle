@@ -1,0 +1,12 @@
+class CreateSchedules < ActiveRecord::Migration[7.1]
+  def change
+    create_table :schedules do |t|
+      t.string :title
+      t.datetime :date
+      t.integer :status
+      t.references :creator, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

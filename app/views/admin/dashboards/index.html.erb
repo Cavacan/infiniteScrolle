@@ -1,0 +1,62 @@
+<div class="dashboard-container">
+  <!-- メニューバー -->
+   <div class="sidebar">
+    <ul>
+      <li><a href="#">ユーザー／ゲスト</a></li>
+      <li><a href="#">スケジュール</a></li>
+      <li><a href="#">リスト</a></li>
+    </ul>
+   </div>
+
+  <!-- メイン画面 -->
+  <div class="main-content">
+    <!-- 検索フォーム -->
+    <div class="search-form">
+      <%= form_with url:admin_dashboards_path, local: true do |f| %>
+        <%= f.label :search, "検索" %>
+        <%= f.text_field :search, placeholder: "Name or Email" %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+
+    <!-- データ画面 -->
+      <div class="data-table">
+        <div class="table_A">
+          <h3>ユーザー</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>名前</th>
+                <th>メールアドレス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="table_B">
+          <h3>ゲスト</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>名前</th>
+                <th>メールアドレス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @guests.each do |guest| %>
+                <tr>
+                  <td><%= guest.name %></td>
+                  <td><%= guest.email %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
