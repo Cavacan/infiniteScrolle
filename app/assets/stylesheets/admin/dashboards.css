@@ -14,7 +14,6 @@
 }
 
 .search-form {
-  font: red;
   margin-bottom: 20px;
 }
 
@@ -31,4 +30,13 @@
 
 .data-table th {
   background: #f8f8f8;
+}
+.data-table td {
+  color: rgba(85, 142, 248, 0.377);
+}
+.data-table tbody tr:nth-child(odd) {
+  background-color:beige;
+}
+.data-table tbody tr:nth-child(even) {
+  background-color: aliceblue;
 }

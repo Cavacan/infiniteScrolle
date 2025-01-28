@@ -8,9 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+User.create!(name: "admin", email:"admin@example.com", roll: :admin)
+3.times do
+  user = User.create!(name: Faker::Name.name, email: Faker::Internet.email, roll: :general)
 
-require 'faker'
-
-100.times do |i|
-  Tweet.create(content: Faker::Lorem.sentence(word_count: 5)) 
+  rand(0..2).times do
+    Guest.create!(name: Faker::Name.name, email: Faker::Internet.email, user: user)
+  end
 end

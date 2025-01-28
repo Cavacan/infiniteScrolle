@@ -32,8 +32,10 @@
             </thead>
             <tbody>
               <% @users.each do |user| %>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                </tr>
               <% end %>
             </tbody>
           </table>

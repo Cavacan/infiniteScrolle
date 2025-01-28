@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_28_041408) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "roll"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

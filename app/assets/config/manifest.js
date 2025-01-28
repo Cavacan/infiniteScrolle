@@ -3,3 +3,4 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link admin/dashboards.css
+//= link_directory ../stylesheets/admin .css
