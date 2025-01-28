@@ -12,11 +12,22 @@
   <div class="main-content">
     <!-- 検索フォーム -->
     <div class="search-form">
-      <%= form_with url:admin_dashboards_path, local: true do |f| %>
-        <%= f.label :search, "検索" %>
-        <%= f.text_field :search, placeholder: "Name or Email" %>
+      <h3>ユーザー検索</h3>
+      <%= search_form_for @q_users, url:admin_dashboards_path do |f| %>
+        <%= f.label :name_cont, "名前" %>
+        <%= f.text_field :name_cont, placeholder: "Name" %>
+        <%= f.label :email_cont, "メールアドレス" %>
+        <%= f.text_field :email_cont, placeholder: "email" %>
         <%= f.submit "検索" %>
       <% end %>
+      <h3>ゲスト検索</h3>
+      <%= search_form_for @q_guests, url:admin_dashboards_path do |f| %>
+        <%= f.label :name_cont, "名前" %>
+        <%= f.text_field :name_cont, placeholder: "Name" %>
+        <%= f.label :email_cont, "メールアドレス" %>
+        <%= f.text_field :email_cont, placeholder: "email" %>
+      <%= f.submit "検索" %>
+    <% end %>
     </div>
 
     <!-- データ画面 -->
@@ -39,7 +50,9 @@
               <% end %>
             </tbody>
           </table>
+          <%= paginate @users, param_name: :page_users %>
         </div>
+
         <div class="table_B">
           <h3>ゲスト</h3>
           <table>
@@ -47,6 +60,8 @@
               <tr>
                 <th>名前</th>
                 <th>メールアドレス</th>
+                <th>紹介者 ID</th>
+                <th>紹介者 Name</th>
               </tr>
             </thead>
             <tbody>
@@ -54,10 +69,13 @@
                 <tr>
                   <td><%= guest.name %></td>
                   <td><%= guest.email %></td>
+                  <td><%= guest.user_id %></td>
+                  <td><%= guest.user.name %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
+          <%= paginate @guests, param_name: :page_guests %>
         </div>
       </div>
   </div>

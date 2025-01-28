@@ -69,3 +69,5 @@ end
 gem 'faker'
 
 gem 'kaminari'
+
+gem 'ransack'
